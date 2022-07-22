@@ -6,12 +6,12 @@ import { getPresaleAddress } from '../utils/addressHelpers'
 // import { poolsConfig } from 'config/constants'
 // import { PoolCategory } from 'config/constants/types'
 // import ifo from 'config/abi/ifo.json'
-// import erc20 from 'config/abi/erc20.json'
+import erc20 from '../config/abi/erc20.json'
 // import rabbitmintingfarm from 'config/abi/rabbitmintingfarm.json'
 // import pancakeRabbits from 'config/abi/pancakeRabbits.json'
 // import lottery from 'config/abi/lottery.json'
 // import lotteryTicket from 'config/abi/lotteryNft.json'
-// import masterChef from 'config/abi/masterchef.json'
+// import masterChef from '../config/abi/masterchef.json'
 import presale from '../config/abi/presale.json'
 // import sousChef from 'config/abi/sousChef.json'
 // import referral from 'config/abi/referral.json'
@@ -37,10 +37,10 @@ const useContract = (abi: AbiItem, address: string, contractOptions?: ContractOp
 //   return useContract(ifoAbi, address)
 // }
 
-// export const useERC20 = (address: string) => {
-//   const erc20Abi = erc20 as unknown as AbiItem
-//   return useContract(erc20Abi, address)
-// }
+export const useERC20 = (address: string) => {
+  const erc20Abi = erc20 as unknown as AbiItem
+  return useContract(erc20Abi, address)
+}
 
 // export const useCake = () => {
 //   return useERC20(getCakeAddress())

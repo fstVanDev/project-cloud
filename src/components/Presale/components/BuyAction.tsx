@@ -2,7 +2,7 @@ import React from 'react'
 // import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
 import { Button, Flex, useModal } from '@pancakeswap-libs/uikit'
-// import useI18n from '../../../hooks/useI18n'
+import useI18n from '../../../hooks/useI18n'
 // import { getBalanceNumber } from 'utils/formatBalance'
 import { useBuy } from '../../../hooks/usePresale'
 // import { useFarmUser } from 'state/hooks'
@@ -25,7 +25,7 @@ interface BuyActionProps {
 
 
 const BuyAction: React.FC<BuyActionProps> = ({ busdBalance, tokensUnclaimed, tokenBalance, tokensLeft }) => {
-   //  const TranslateString = useI18n()
+    const TranslateString = useI18n()
     const { onBuy } = useBuy()
 
     const [onPresentBuy] = useModal(

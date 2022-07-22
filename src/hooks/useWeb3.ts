@@ -16,11 +16,11 @@ const httpProvider = new Web3.providers.HttpProvider(RPC_URL, { timeout: 10000 }
 const useWeb3 = () => {
    const { ethereum }: { ethereum?: ProviderType } = useWallet()
   const refEth = useRef(ethereum)
-  const [web3, setweb3] = useState(new Web3(ethereum || httpProvider))
+  const [web3, setweb3] = useState(new Web3(ethereum as any || httpProvider))
 
   useEffect(() => {
     if (ethereum !== refEth.current) {
-      setweb3(new Web3(ethereum || httpProvider))
+      setweb3(new Web3(ethereum as any || httpProvider))
       refEth.current = ethereum
     }
   }, [ethereum])
