@@ -13,8 +13,9 @@ import {
   ActiveBlock,
   SwicthAddress,
   ConnectButton,
-   DropContainer,
+  DropContainer,
   DropButton,
+  ConnectButtton1,
 } from "./styled";
 
 const ConnectWallet = () => {
@@ -113,30 +114,44 @@ const ConnectWallet = () => {
 
   return (
     <ActiveBlock>
-      {!active ? (
-        <SwicthAddress></SwicthAddress>
-      ) : (
+      {/* {!active ? null : (
         <div>
-          <SwicthAddress>
-            <button onClick={() => dropDown()}>
-              <p>Switch Network</p>
-            </button>
-          </SwicthAddress>
-          {/* {!clicked ? null : (
-            <DropContainer>
-              <DropButton type="button" value="1" onClick={switchNetwork}>
-                Ethereum
-              </DropButton>
-              <DropButton type="button" value="56" onClick={switchNetwork}>
-                BNB Chain
-              </DropButton>
-              <DropButton type="button" value="43114" onClick={switchNetwork}>
-                Avalanche
-              </DropButton>
-            </DropContainer>
-          )} */}
+          <button onClick={() => dropDown()}>
+            <p>Switch Network</p>
+          </button>
+          {/* {!clicked ? null : ( 
+          <DropContainer>
+            <DropButton type="button" value="1" onClick={switchNetwork}>
+              Ethereum
+            </DropButton>
+            <DropButton type="button" value="56" onClick={switchNetwork}>
+              BNB Chain
+            </DropButton>
+            <DropButton type="button" value="43114" onClick={switchNetwork}>
+              Avalanche
+            </DropButton>
+          </DropContainer>
+           )}
         </div>
-      )}
+      )} */}
+
+      <ConnectButtton1 onClick={() => dropDown()} type="button">
+        {!clicked ? (
+          <p>Switch Network</p>
+        ) : (
+          <DropContainer>
+            <DropButton type="button" value="1" onClick={switchNetwork}>
+              Ethereum
+            </DropButton>
+            <DropButton type="button" value="56" onClick={switchNetwork}>
+              BNB Chain
+            </DropButton>
+            <DropButton type="button" value="43114" onClick={switchNetwork}>
+              Avalanche
+            </DropButton>
+          </DropContainer>
+        )}
+      </ConnectButtton1>
 
       {!active ? (
         <ConnectButton onClick={onOpen}>Connect Wallet</ConnectButton>

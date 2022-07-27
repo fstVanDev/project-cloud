@@ -8,9 +8,13 @@ export const ActiveBlock = styled.div`
   height: 80px;
   display: flex;
   justify-content: space-around;
+
+  div button {
+    top: 14px;
+  }
 `;
 
-export const SwicthAddress = styled.button`
+export const SwicthAddress = styled.div`
   width: 140px;
   height: 35px;
   border: none;
@@ -20,15 +24,10 @@ export const SwicthAddress = styled.button`
   position: relative;
   z-index: 0;
   border-radius: 10px;
-  margin: auto 0px;
-
-  p {
-    color: #fff;
-    display: block;
-  }
+  text-align: center;
 
   &:before {
-    content: "";
+    content: "Swicth";
     background: linear-gradient(
       45deg,
       #ff0000,
@@ -90,6 +89,20 @@ export const SwicthAddress = styled.button`
       background-position: 0 0;
     }
   }
+`;
+
+export const ConnectButtton1 = styled.button`
+  width: 120px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  margin: auto 0px;
 `;
 
 export const ConnectButton = styled.button`
@@ -170,21 +183,25 @@ export const ConnectButton = styled.button`
   }
 `;
 export const DropButton = styled.button`
-    width: 140px;
-    border-radius: 10px;
-    height: 60px;
-    color: #fff;
-    text-decoration: none;
-    display: block;
+  width: 120px;
+  border-radius: 10px;
+  height: 60px;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  z-index: 1;
+
+  &:hover {
+    border: 1px solid #ccc;
+  }
 `;
 export const DropContainer = styled.div`
-  width: 140px;
+  width: 120px;
   height: min-content;
   position: absolute;
   display: column;
-  background: #000;
-  margin-top: 16px;
+  background: #111;
+  margin: -25px 0px 0px 0px;
   border-radius: 10px;
-
- 
+  z-index: 0;
 `;

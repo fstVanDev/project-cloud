@@ -9,6 +9,8 @@ import {
   getFullDisplayBalance,
 } from "../../../utils/formatBalance";
 
+import { ModalBlock } from "../../NewPresale/styles";
+
 interface BuyModalProps {
   max: BigNumber;
   tokenName?: string;
@@ -66,45 +68,47 @@ const BuyModal: React.FC<BuyModalProps> = ({
   };
 
   return (
-    <Modal
-      title={`${TranslateString(316, "Buy")} ${tokenName} Tokens`}
-      onDismiss={onDismiss}
-    >
-      <TokenInput
-        value={val}
-        onSelectMax={handleSelectMax}
-        onChange={handleChange}
-        max={fullBalance}
-        symbol={tokenName}
-      />
-      <div style={{ color: "#fff" }}>{renderErrorMessage()}</div>
-      <ModalActions>
-      <Button variant="secondary" onClick={onDismiss}>
-        {TranslateString(462, "Cancel")}
-      </Button>
-      <Button
-        disabled={
-          parseInt(val) > getBalanceNumber(tokensLeft) ||
-          parseInt(val) +
-            getBalanceNumber(tokenBalance) +
-            getBalanceNumber(tokensUnclaimed) >
-            2000 ||
-          parseInt(val) < 10 ||
-          pendingTx
-        }
-        onClick={async () => {
-          setPendingTx(true);
-          await onConfirm(val);
-          setPendingTx(false);
-          onDismiss();
-        }}
+    <ModalBlock>
+      <Modal
+        title={`${TranslateString(316, "Buy")} ${tokenName} Tokens`}
+        onDismiss={onDismiss}
       >
-        {pendingTx
-          ? TranslateString(488, "Pending Confirmation")
-          : TranslateString(464, "Confirm")}
-      </Button>
-      </ModalActions>
-    </Modal>
+        <TokenInput
+          value={val}
+          onSelectMax={handleSelectMax}
+          onChange={handleChange}
+          max={fullBalance}
+          symbol={tokenName}
+        />
+        <div style={{ color: "#fff" }}>{renderErrorMessage()}</div>
+        <ModalActions>
+          {/* <Button variant="secondary" onClick={onDismiss}>
+        {TranslateString(462, "Cancel")}
+      </Button> */}
+          <Button
+            disabled={
+              parseInt(val) > getBalanceNumber(tokensLeft) ||
+              parseInt(val) +
+                getBalanceNumber(tokenBalance) +
+                getBalanceNumber(tokensUnclaimed) >
+                2000 ||
+              parseInt(val) < 10 ||
+              pendingTx
+            }
+            onClick={async () => {
+              setPendingTx(true);
+              await onConfirm(val);
+              setPendingTx(false);
+              onDismiss();
+            }}
+          >
+            {pendingTx
+              ? TranslateString(488, "Pending Confirmation")
+              : TranslateString(464, "Confirm")}
+          </Button>
+        </ModalActions>
+      </Modal>
+    </ModalBlock>
   );
 };
 

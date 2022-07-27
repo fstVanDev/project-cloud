@@ -1,19 +1,17 @@
 import React, { lazy, Suspense } from "react";
 import Navbar from "./components/NavBar/Navbar/Navbar";
 import PageLoader from "./components/PageLoader";
+// import NewPresale from "./components/NewPresale/NewPresale";
 
 const Presale = lazy(() => import("./components/Presale"));
 
 const App = () => {
   return (
     <Suspense fallback={<PageLoader />}>
-      <div
-        style={{
-          backgroundImage: "linear-gradient(to left, #434343 0%, black 100%)",
-        }}
-      >
+      <div>
         <Navbar />
-        <Presale />
+           <Presale />
+           {/* <NewPresale/> */}
       </div>
     </Suspense>
   );

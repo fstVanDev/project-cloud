@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useCallback, useState, useMemo } from "react";
 import {
-  Card,
-  CardBody,
+  //   Card,
+  //   CardBody,
   CardFooter,
   Flex,
   Button,
@@ -18,6 +18,9 @@ import { getBalanceNumber } from "../../../utils/formatBalance";
 import BuyAction from "./BuyAction";
 import styles from "../styles/presale.module.css";
 import ClaimAction from "./ClaimAction";
+
+import { PresaleBlock, Card, CardBody } from "../../NewPresale/styles";
+
 
 interface BuyCardProps {
   account?: string;
@@ -80,7 +83,7 @@ const BuyCard: React.FC<BuyCardProps> = ({
 
   return (
     <div>
-      <Flex
+      {/* <Flex
         className={styles.cardContainer}
         justifyContent="space-between"
         style={{ marginTop: "30px" }}
@@ -193,7 +196,51 @@ const BuyCard: React.FC<BuyCardProps> = ({
             </div>
           </CardFooter>
         </Card>
-      </Flex>
+      </Flex> */}
+
+      <PresaleBlock>
+        <Card>
+          <CardBody>
+            Buy 6RMB
+            <div className={styles.item}>
+              6RMB Price
+              <div className={styles.colored}>3.00 BUSD</div>
+              <div className={styles.item}>
+                Max Per Wallet
+                <div className={styles.colored}>200 6RMB</div>
+                {!account ? (
+                  <UnlockButton mt="8px" fullWidth />
+                ) : (
+                  renderApprovalOrBuyButton()
+                )}
+              </div>
+            </div>
+          </CardBody>
+
+          <CardBody>
+            Claim 6RMB
+            <div className={styles.item}>
+              Unclaimed 6RMB
+              <div className={styles.colored}>
+                {getBalanceNumber(tokensUnclaimed)} 6RMB
+              </div>
+              <div className={styles.item}>
+                Max Per Wallet
+                <div className={styles.colored}>
+                  {getBalanceNumber(tokenBalance)} 6RMB{" "}
+                </div>
+                {!account ? (
+                  <UnlockButton mt="8px" fullWidth />
+                ) : (
+                  renderClaimButton()
+                )}
+              </div>
+            </div>
+          </CardBody>
+        </Card>
+
+        <CardBody></CardBody>
+      </PresaleBlock>
     </div>
   );
 };
